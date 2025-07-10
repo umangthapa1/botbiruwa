@@ -700,4 +700,59 @@ if (viewAllBtn) {
     viewAllBtn.addEventListener('click', () => openGalleryLightbox(0));
 }
 
-console.log('Bot Biruwa website loaded successfully with enhanced features! 🌱✨'); 
+console.log('Bot Biruwa website loaded successfully with enhanced features! 🌱✨');
+
+// Animated background for hero section
+function createHeroAnimatedBackground() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const canvas = document.createElement('canvas');
+    canvas.className = 'hero-animated-bg';
+    canvas.style.position = 'absolute';
+    canvas.style.top = 0;
+    canvas.style.left = 0;
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.zIndex = 0;
+    canvas.style.pointerEvents = 'none';
+    hero.style.position = 'relative';
+    hero.prepend(canvas);
+
+    function resizeCanvas() {
+        canvas.width = hero.offsetWidth;
+        canvas.height = hero.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Animated circles
+    const circles = Array.from({length: 18}).map(() => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 30 + Math.random() * 40,
+        dx: (Math.random() - 0.5) * 0.4,
+        dy: (Math.random() - 0.5) * 0.4,
+        color: `rgba(${120+Math.floor(Math.random()*60)},${180+Math.floor(Math.random()*40)},${120+Math.floor(Math.random()*60)},0.13)`
+    }));
+
+    function animate() {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (const c of circles) {
+            ctx.beginPath();
+            ctx.arc(c.x, c.y, c.r, 0, 2 * Math.PI);
+            ctx.fillStyle = c.color;
+            ctx.fill();
+            c.x += c.dx;
+            c.y += c.dy;
+            if (c.x < -c.r) c.x = canvas.width + c.r;
+            if (c.x > canvas.width + c.r) c.x = -c.r;
+            if (c.y < -c.r) c.y = canvas.height + c.r;
+            if (c.y > canvas.height + c.r) c.y = -c.r;
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+createHeroAnimatedBackground(); 

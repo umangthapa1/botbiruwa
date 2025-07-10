@@ -81,40 +81,54 @@ body {
     color: #4a7c59;
 }
 
-/* Hero Section */
+/* Hero Section - Modern Centered Look */
 .hero {
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding-top: 80px;
+    justify-content: center;
+    background: #fff;
+    padding-top: 200px;
+    padding-bottom: 160px;
 }
 
 .hero-content {
     flex: 1;
-    padding: 2rem;
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.4rem;
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #2d5a27;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #4a7c59;
+    margin-bottom: 0.1rem;
+    letter-spacing: -1px;
 }
 
 .hero-tagline {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    color: #2d5a27;
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+}
+
+.hero-description {
+    font-size: 1rem;
     color: #666;
-    margin-bottom: 2rem;
-    font-weight: 400;
+    max-width: 500px;
+    margin-bottom: 0.7rem;
+    line-height: 1.6;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
 }
 
 .btn {
@@ -155,20 +169,52 @@ body {
 .hero-image {
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     padding: 2rem;
 }
 
 .hero-image img {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 320px;
+    max-height: 260px;
     width: 100%;
     height: auto;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     display: block;
     margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        min-height: 70vh;
+        padding-top: 140px;
+        padding-bottom: 100px;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-tagline {
+        font-size: 1rem;
+    }
+    .hero-description {
+        font-size: 0.95rem;
+        max-width: 95vw;
+    }
+    .hero-image img {
+        max-width: 180px;
+        max-height: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        display: none;
+    }
+    .hero-content {
+        padding: 0.5rem;
+    }
 }
 
 /* Section Styles */
